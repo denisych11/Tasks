@@ -15,7 +15,7 @@ inline void keep_window_open()
     return;
 }
 
-inline void simple_error(std::wstring s)	// write ``error: s and exit program
+inline void simple_error(const std::wstring& s)	// write ``error: s and exit program
 {
     std::wcerr << "error: " << s << '\n';
     keep_window_open();		// for some Windows environments
@@ -233,6 +233,17 @@ void Task10()
     }
 }
 
+void printCoins(int coins, const std::wstring& type)
+{
+
+    if (coins == 1)
+        std::wcout << L"У вас 1 " << type << L"центовая монета" << std::endl;
+    else if (coins == 2 || coins == 3 || coins == 4)
+        std::wcout << L"У вас " << coins << " " << type << L"центовые монеты" << std::endl;
+    else
+        std::wcout << L"У вас " << coins << " " << type << L"центовых монет" << std::endl;
+}
+
 void Task11()
 {
     int oneC{ 0 }, fiveC{ 0 }, tenC{ 0 }, twentC{ 0 }, fiftyC{ 0 };
@@ -247,40 +258,12 @@ void Task11()
     std::wcout << L"Сколько у вас пятидесятицентовых монет?" << std::endl;
     std::wcin >> fiftyC;
 
-    if (oneC == 1)
-        std::wcout << L"У вас 1 одноцентовая монета" << std::endl;
-    else if(oneC == 2 || oneC == 3 || oneC == 4)
-        std::wcout << L"У вас " << oneC<<L" одноцентовые монеты" << std::endl;
-    else 
-        std::wcout << L"У вас " << oneC << L" одноцентовых монет" << std::endl;
 
-    if (fiveC == 1)
-        std::wcout << L"У вас 1 пятицентовая монета" << std::endl;
-    else if (fiveC == 2 || fiveC == 3 || fiveC == 4)
-        std::wcout << L"У вас " << fiveC << L" пятицентовые монеты" << std::endl;
-    else
-        std::wcout << L"У вас " << fiveC << L" пятицентовых монет" << std::endl;
-
-    if (tenC == 1)
-        std::wcout << L"У вас 1 десятицентовая монета" << std::endl;
-    else if (tenC == 2 || tenC == 3 || tenC == 4)
-        std::wcout << L"У вас " << tenC << L" десятицентовые монеты" << std::endl;
-    else
-        std::wcout << L"У вас " << tenC << L" десятицентовых монет" << std::endl;
-
-    if (twentC == 1)
-        std::wcout << L"У вас 1 двадцатипятицентовая монета" << std::endl;
-    else if (twentC == 2 || twentC == 3 || twentC == 4)
-        std::wcout << L"У вас " << twentC << L" двадцатипятицентовые монеты" << std::endl;
-    else
-        std::wcout << L"У вас " << twentC << L" двадцатипятицентовых монет" << std::endl;
-
-    if (fiftyC == 1)
-        std::wcout << L"У вас 1 пятидесятицентовая монета" << std::endl;
-    else if (fiftyC == 2 || fiftyC == 3 || fiftyC == 4)
-        std::wcout << L"У вас " << fiftyC << L" пятидесятицентовые монеты" << std::endl;
-    else
-        std::wcout << L"У вас " << fiftyC << L" пятидесятицентовых монет" << std::endl;
+    printCoins(oneC, L"одно");
+    printCoins(fiveC, L"пяти");
+    printCoins(tenC, L"десяти");
+    printCoins(twentC, L"двадцатипяти");
+    printCoins(fiftyC, L"пятидесяти");
 
     int sumC = oneC + fiveC * 5 + tenC * 10 + twentC * 25 + fiftyC * 50;
     int doll = sumC / 100;
