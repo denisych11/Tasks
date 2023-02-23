@@ -81,7 +81,7 @@ void Task7()
 		std::cin >> a >> b >> c;
 		double sqr = b * b - 4 * a * c;
 		if (sqr < 0)
-			throw "Discriminant less than zero";
+			std::runtime_error("Discriminant less than zero");
 		double x1 = (-b + sqrt(sqr)) / 2 * a;
 		double x2 = (-b - sqrt(sqr)) / 2 * a;
 
@@ -90,9 +90,9 @@ void Task7()
 		else
 			std::cout << "x= " << x1 << std::endl;
 	}
-	catch (...)
+	catch (const std::exception& e)
 	{
-		std::cerr << "Equation has no roots" << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 }
 
@@ -114,7 +114,7 @@ void Task8()
 			v.push_back(std::stod(temp));
 		}
 		if (n > v.size())
-			throw "Error";
+			std::runtime_error("Error! N > size of vector");
 
 		double res{ 0 };
 		std::cout << "The sum of first " << n << " numbers (";
@@ -135,9 +135,9 @@ void Task8()
 		}
 
 	}
-	catch (...)
+	catch (const std::exception& e)
 	{
-		std::cerr << "Error" << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 }
 
