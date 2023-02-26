@@ -81,7 +81,7 @@ void Task7()
 		std::cin >> a >> b >> c;
 		double sqr = b * b - 4 * a * c;
 		if (sqr < 0)
-			std::runtime_error("Discriminant less than zero");
+			throw std::runtime_error("Discriminant less than zero");
 		double x1 = (-b + sqrt(sqr)) / 2 * a;
 		double x2 = (-b - sqrt(sqr)) / 2 * a;
 
